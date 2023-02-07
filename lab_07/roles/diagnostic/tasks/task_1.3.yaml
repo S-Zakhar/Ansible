@@ -1,0 +1,8 @@
+---
+- name: Download file (control checksum) # task 1.3
+  get_url:
+    url: http://{{ansible_host}}/file1.jpg
+    dest: /tmp/file1.jpg
+    checksum: md5:62171fb574a4e76933b482ec4ec2f873
+
+...

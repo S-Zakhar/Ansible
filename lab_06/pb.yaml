@@ -1,0 +1,9 @@
+---
+- name: Deploy nginx
+  hosts: apps
+#  gather_facts: false
+  become: true
+  roles:
+#    - { role: nginx, tags: [nginx] }
+   - role: nginx
+

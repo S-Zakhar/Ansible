@@ -1,0 +1,17 @@
+---
+- block:
+  - name: Check dir
+    stat:
+      path: "{{ item.home_dir  }}/buckups"
+    register: dir_data
+
+  - debug: var=dir_data.stat.path
+
+  - name: Create directory if it not already exist
+    file:
+      path: "{{ item.home_dir  }}/buckups"
+      state: directory
+      owner: "{{ item.login }}"
+    when: not dir_data.stat.exists
+    loop: "{{ users }}"
+...

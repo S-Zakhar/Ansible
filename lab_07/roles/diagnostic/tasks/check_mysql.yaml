@@ -1,0 +1,12 @@
+---
+# Tasks for diagnostic purposes
+
+# Task 3 (mysql)
+- name: INCLUDED TASK | Get MySQL service status
+  ansible.builtin.systemd:
+    name: "mysql"
+  register: mysql_service_status
+
+- debug:
+    var: mysql_service_status.status.ActiveState
+...

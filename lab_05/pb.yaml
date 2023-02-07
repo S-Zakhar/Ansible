@@ -1,0 +1,8 @@
+# playbook for test reasons
+---
+- hosts: myservers
+  roles:
+    - create_users
+    - file_and_dir
+
+...

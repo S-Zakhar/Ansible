@@ -1,0 +1,15 @@
+
+---
+- name: install pip and PyMySQL
+  block:
+    - name: install python3-pip
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+          - python3-pip
+          - zip
+
+    - name: install PyMySQL
+      pip:
+        name: pymysql

@@ -1,0 +1,17 @@
+---
+# this is a first version (not used in final version)
+- name: Enable and Restart nginx
+  systemd:
+    name: nginx
+    enabled: true
+    state: restarted
+  register: result
+
+- name: Show nginx service status
+  debug:
+    msg: "{{ result.state }}"
+
+# I used the easiest way to check availability (not the smartest way, of course)
+- name: Check availability
+  uri:
+    url: http://{{ ansible_host }}

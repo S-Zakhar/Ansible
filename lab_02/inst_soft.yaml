@@ -1,0 +1,5 @@
+---
+- hosts: myservers
+  roles:
+    - my_srv
+...

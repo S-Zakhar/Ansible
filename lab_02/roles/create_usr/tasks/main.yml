@@ -1,0 +1,8 @@
+# Create OS user
+---
+- name: Create OS user
+  user:
+    name: ansusr
+    comment: ansible user
+    shell: /bin/bash
+...

@@ -1,0 +1,12 @@
+---
+# Tasks for diagnostic purposes
+
+# Task3 (nginx)
+- name: INCLUDED TASK | Get Nginx service status
+  ansible.builtin.systemd:
+    name: "nginx"
+  register: nginx_service_status
+
+- debug:
+    var: nginx_service_status.status.ActiveState
+...

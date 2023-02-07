@@ -1,0 +1,16 @@
+# Создать файл requirements.yml, описать в нем зависимости (все внешние роли)
+---
+- src: https://github.com/geerlingguy/ansible-role-mysql.git
+  scm: git
+  version: master
+  name: ansible-role-mysql
+
+- src: https://github.com/geerlingguy/ansible-role-nginx.git
+  scm: git
+  version: master
+  name: ansible-role-nginx
+
+- src: https://github.com/geerlingguy/ansible-role-php.git
+  scm: git
+  version: master
+  name: ansible-role-php

@@ -1,0 +1,6 @@
+---
+- name: install pip and PyMySQL
+  import_tasks: "prereq.yml"
+
+- name: install and start mysql
+  import_tasks: "install.yml"

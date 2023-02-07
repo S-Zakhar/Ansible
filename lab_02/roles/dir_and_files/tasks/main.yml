@@ -1,0 +1,27 @@
+---
+- name: Create a directory
+  file:
+    path: "{{ dir_path }}"
+    state: directory
+    mode: '0755'
+
+- name: Create a text file
+  file:
+    path: "{{ dir_path }}/text_file.txt"
+    state: touch
+
+- name: Insert text block in to the file
+  ansible.builtin.blockinfile:
+    path: "{{ dir_path }}/text_file.txt"
+    block: |
+      GNU — свободная Unix-подобная операционная система, разрабатываемая Проектом GNU. 
+      Акроним GNU был выбран из-за того, что GNU является Unix-подобной операционной системой, 
+      но отличается от Unix тем, что является свободным программным обеспечением и не содержит кода Unix
+      .
+
+- name: Get file from Internet
+  get_url:
+    url: "{{ file_url }}"
+    dest: "{{ dir_path }}/downloaded_file"
+
+...

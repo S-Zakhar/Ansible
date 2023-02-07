@@ -1,0 +1,4 @@
+---
+- name: Include tasks from others files
+  include: check_dir.yaml
+  include: create_file.yaml

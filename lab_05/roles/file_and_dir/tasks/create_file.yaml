@@ -1,0 +1,33 @@
+- name: Create a text file
+  file:
+    path: "{{ item.home_dir }}/greetings.txt"
+    state: touch
+  loop: "{{ users }}"
+
+# Простите за такой идиотский пример использования when
+- name: Create file with greetings
+  ansible.builtin.blockinfile:
+    path: "{{ item.home_dir }}/greetings.txt"
+    block: |
+      Уважаемый пользователь!
+      Ваш компьютер работает под управлением операционной системы Linux (семейство Debian). 
+      Установки программного обеспечения осуществляется из deb-пакетов.
+      Пример команды 'sudo dpkg -i <имя_deb_пакета>
+      Далее инструкции по семейсту Debian
+      .
+  when: ansible_facts['os_family'] == "Debian"
+  loop: "{{ users }}"
+
+- name: Create file with greetings
+  ansible.builtin.blockinfile:
+    path: "{{ item.home_dir }}/greetings.txt"
+    block: |
+      Уважаемый пользователь!
+      Ваш компьютер работает под управлением операционной системы Linux (семейство RedHat). 
+      Установки программного обеспечения осуществляется из rpm-пакетов.
+      Пример команды 'rpm <имя_rpm_пакета>
+      Далее инструкции по семейсту RedHat...
+  when: ansible_facts['os_family'] == "RedHat"
+  loop: "{{ users }}"
+
+

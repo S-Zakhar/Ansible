@@ -1,0 +1,45 @@
+---
+- include_tasks: task_1.3.yaml
+
+- name: exec health request
+  ignore_errors: true
+  uri:
+    url: "http://{{ ansible_host }}:{{ nginx.port | default(80) }}/health/health"
+    return_content: yes
+    status_code: 200
+  delegate_to: 127.0.0.1
+  register: nginx_out
+
+- name: set facts
+  set_fact:
+    nginx_health: "{{ nginx_out.content | from_json }}"
+
+#- name: Print nginx_health   # for debugging purposes
+#  debug:
+#    var: nginx_health
+
+- include_tasks: check_nginx.yaml
+  when: nginx_health.ActiveState == "false"
+
+
+- name: BLOCK MySQL
+  block:
+    - name: Wait for mysql port 3306 to become open on the host
+      ansible.builtin.wait_for:
+        port: 3306
+        delay: 5
+        timeout: 10
+  rescue:
+    - include_tasks: check_mysql.yaml
+
+
+- name: BLOCK Nginx
+  block:
+    - name: Wait for nginx port 80 to become open on the host
+      ansible.builtin.wait_for:
+        port: 80  # It's better to use a variable here. I want to redo it when I have enough time
+        delay: 5
+        timeout: 10
+  rescue:
+    - include_tasks: check_nginx.yaml
+...

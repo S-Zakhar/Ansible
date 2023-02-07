@@ -1,0 +1,6 @@
+[apps]
+srv1 ansible_host=192.168.11.81 ansible_user=root ansible_ssh_private_key_file=/home/sergey/.ssh/id_rsa
+srv2 ansible_host=192.168.11.82 ansible_user=root ansible_ssh_private_key_file=/home/sergey/.ssh/id_rsa
+
+[others_servers]
+#srv3 ansible_host=192.168.11.99 ansible_user=root ansible_ssh_private_key_file=/home/sergey/.ssh/id_rsa

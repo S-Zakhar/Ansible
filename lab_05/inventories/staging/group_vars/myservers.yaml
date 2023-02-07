@@ -1,0 +1,20 @@
+---
+users:
+  - login: "admin1"
+    password: "pass1"
+    home_dir: /home/admin1
+    generate_key: yes
+    package_list: ["vim", "mc"]
+
+  - login: "admin2"
+    password: "pass2"
+    home_dir: /home/admin2
+    generate_key: yes
+    package_list: ["vim", "mc"]
+
+  - login: "admin3"
+    password: "pass3"
+    home_dir: /home/admin3
+    generate_key: yes
+    package_list: ["vim", "mc"]
+...

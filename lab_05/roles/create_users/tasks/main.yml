@@ -1,0 +1,14 @@
+# 3. Организовать создание пользователей из инвентори:
+# в инвентори список логин-пароль-дом.директория-генерация ключа
+---
+- name: Create user
+  ansible.builtin.user:
+    name: "{{ item.login }}"
+    password: "{{ item.password }}"
+    home: "{{ item.home_dir }}"
+    shell: /bin/bash
+    generate_ssh_key: "{{ item.generate_key }}"
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+  loop: "{{ users }}"
+

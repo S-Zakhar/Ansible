@@ -1,0 +1,10 @@
+---
+- hosts: myservers
+
+  vars_files:
+    - ./roles/wordpress/vars/wordpress.yml
+  roles:
+    - ./external_roles/ansible-role-nginx
+    - ./external_roles/ansible-role-php
+    - ./external_roles/ansible-role-mysql
+    - wordpress

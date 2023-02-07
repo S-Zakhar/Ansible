@@ -1,0 +1,4 @@
+---
+dir_path: "/tmp/test_directory"
+file_url: "https://raw.githubusercontent.com/ansible/ansible/devel/README.rst"
+...
